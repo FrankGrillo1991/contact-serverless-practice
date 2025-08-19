@@ -21,21 +21,21 @@ export default async function handler(req, res) {
     console.log('New contact:', { name, email, message });
 
     // OPTIONAL: Email provider integration (e.g., Resend)
-    // if (process.env.RESEND_API_KEY) {
-    //   await fetch('https://api.resend.com/emails', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       from: 'noreply@yourdomain.com',
-    //       to: process.env.CONTACT_TO || 'you@example.com',
-    //       subject: `New contact from ${name}`,
-    //       html: `<p><b>Name:</b> ${name}<br/><b>Email:</b> ${email}<br/><b>Message:</b> ${message}</p>`
-    //     })
-    //   });
-    // }
+    if (process.env.RESEND_API_KEY) {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: 'noreply@yourdomain.com',
+          to: process.env.CONTACT_TO || 'you@example.com',
+          subject: `New contact from ${name}`,
+          html: `<p><b>Name:</b> ${name}<br/><b>Email:</b> ${email}<br/><b>Message:</b> ${message}</p>`
+        })
+      });
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
