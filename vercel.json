@@ -3,9 +3,6 @@
   "functions": {
     "api/*.js": {
       "runtime": "nodejs@20.x"
-    },
-    "api/*.php": {
-      "runtime": "now-php@1.0.0"
     }
-  }
+}
 }
