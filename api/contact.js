@@ -30,7 +30,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           from: 'noreply@yourdomain.com',
-          to: process.env.CONTACT_TO || 'you@example.com',
+          to: process.env.CONTACT_TO || 'fsg12491@aol.com',
           subject: `New contact from ${name}`,
           html: `<p><b>Name:</b> ${name}<br/><b>Email:</b> ${email}<br/><b>Message:</b> ${message}</p>`
         })
