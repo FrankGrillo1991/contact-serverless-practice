@@ -1,8 +1,15 @@
 {
+  "version": 2,
   "functions": {
-    "api/**/*.php": { "runtime": "vercel-php@0.7.4" }
+    "api/*.js": {
+      "runtime": "nodejs@20.x"
+    },
+    "api/*.php": {
+      "runtime": "now-php@1.0.0"
+    }
   },
   "routes": [
-    { "src": "/(.*)", "dest": "/api/index.php" }
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
