@@ -1,36 +1,26 @@
 # Contact Serverless • Practice
 
-This is a minimal practice project to deploy a contact form to **Vercel** using a **serverless function**.
+This is a minimal practice project to deploy a contact form to **Railway** using a **Node.js Express server**.
 
 ## Files
 - `index.html` — Simple contact form posting to `/api/contact`.
-- `api/contact.js` — Serverless function that validates fields and logs messages.
-- `vercel.json` — Node.js 20 runtime and routes (SPA fallback to `index.html`).
+- `server.js` — Express server that serves the contact API and static files.
+- `package.json` — Project config and start script for Railway.
 
 ## Local Setup
 ```bash
-npm i -g vercel
-vercel login
-vercel link        # follow prompts
-vercel dev         # http://localhost:3000
+npm install
+npm start         # http://localhost:3000
 ```
 
-## Deploy
-```bash
-vercel            # preview
-vercel --prod     # production
-```
-
-## Optional: Email Delivery
-Add env vars in Vercel Project Settings → Environment Variables:
-- `RESEND_API_KEY`
-- `CONTACT_TO` (e.g., your email)
-
-Uncomment the Resend section in `api/contact.js`, then redeploy.
+## Deploy to Railway
+1. Push your code to GitHub.
+2. Go to [Railway](https://railway.app/), create a new project, and connect your repo.
+3. Railway will auto-detect Node.js and deploy your app.
 
 ## Verify
-- Submit the form on your deployed site.
-- Check logs in Vercel Dashboard → Deployments → Logs (or CLI: `vercel logs <url> --since=10m`).
+- Submit the form on your deployed Railway site.
+- Check logs in the Railway dashboard for submissions.
 
 ---
 
